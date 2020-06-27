@@ -17,10 +17,24 @@ import ar.com.ada.api.empleados.services.EmpleadoService;
 public class EmpleadoController {
     @Autowired
     EmpleadoService empleadoService;
+    @Autowired
+    CategoriaService categoriaService;
+
 
     @PostMapping("/empleadas")
-    public ResponseEntity<?> crearEmpleado(@RequestBody Empleado empleado){
-        empleadoService.crearEmpleado(empleado);
+   
+  
+   
+    public ResponseEntity<?> crearEmpleado(@RequestBody InfoEmpleadaRequest info){
+        Empleado empleada = new Empleado();
+        empleada.serNombre(info.nombre);
+        empleada.setEdad(info.edad);
+        empleada.setSueldoBase(info.sueldo);
+        empleada.setFechaAlta(new Date());
+        Categoria categoria = categoriaService                                                                              
+        
+        
+        empleadoService.crearEmpleado(empleada);
         GenericResponse gR = new GenericResponse();
         gR.isOk = true;
         gR.id = empleado.getEmpleadoId();
