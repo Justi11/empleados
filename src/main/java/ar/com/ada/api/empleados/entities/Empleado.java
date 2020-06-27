@@ -49,12 +49,12 @@ public class Empleado {
         this.edad = edad;
     }
 
-    public BigDecimal getSueldoBase() {
+    public BigDecimal getSueldo() {
         return sueldo;
     }
 
-    public void setSueldoBase(BigDecimal sueldoBase) {
-        this.sueldo = sueldoBase;
+    public void setSueldo(BigDecimal sueldo) {
+        this.sueldo = sueldo;
     }
 
     public Date getFechaAlta() {

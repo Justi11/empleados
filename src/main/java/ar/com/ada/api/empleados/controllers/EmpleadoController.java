@@ -1,6 +1,9 @@
 package ar.com.ada.api.empleados.controllers;
 
+import java.util.Date;
 import java.util.List;
+
+import javax.sound.sampled.DataLine.Info;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,9 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ar.com.ada.api.empleados.entities.Categoria;
 import ar.com.ada.api.empleados.entities.Empleado;
+import ar.com.ada.api.empleados.models.requests.InfoEmpleadaRequest;
 import ar.com.ada.api.empleados.models.response.GenericResponse;
-import ar.com.ada.api.empleados.services.EmpleadoService;
+import ar.com.ada.api.empleados.services.*;
 
 @RestController
 public class EmpleadoController {
@@ -27,17 +32,18 @@ public class EmpleadoController {
    
     public ResponseEntity<?> crearEmpleado(@RequestBody InfoEmpleadaRequest info){
         Empleado empleada = new Empleado();
-        empleada.serNombre(info.nombre);
+        empleada.setNombre(info.nombre);
         empleada.setEdad(info.edad);
-        empleada.setSueldoBase(info.sueldo);
+        empleada.setSueldo(info.sueldo);
         empleada.setFechaAlta(new Date());
-        Categoria categoria = categoriaService                                                                              
+        Categoria categoria = categoriaService.obtenerPorId(info.categoriaId);
+        empleada.setCategoria(categoria);                                                                             
         
         
         empleadoService.crearEmpleado(empleada);
         GenericResponse gR = new GenericResponse();
         gR.isOk = true;
-        gR.id = empleado.getEmpleadoId();
+        gR.id = empleada.getEmpleadoId();
         gR.message = "Empleada creada con exito";
         return ResponseEntity.ok(gR);
     }

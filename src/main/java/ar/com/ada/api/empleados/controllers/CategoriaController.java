@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import ar.com.ada.api.empleados.entities.Categoria;
 import ar.com.ada.api.empleados.models.response.GenericResponse;
 import ar.com.ada.api.empleados.services.CategoriaService;
@@ -20,7 +21,7 @@ import ar.com.ada.api.empleados.services.CategoriaService;
 public class CategoriaController {
     @Autowired
     CategoriaService categoriaService;
-    @Autowired
+    
     
     // indica a front que haga un post a la ruta indicada (categorias)
     // buenas practicas sustantivos en plural(api rest)

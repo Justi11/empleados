@@ -13,8 +13,8 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int categoriaId;
     private String nombre;
-    @Column(name = "sueldo_base")
-    private BigDecimal sueldoBase;
+    
+    private BigDecimal sueldo;
     // OneToMany la clase categoria va de una a muchas en empleado, va a aparecer varias veces una misma categoria
     // mappedBy como voy a referenciarme al obj categoria pero desde el punto de vista empleado, "categoria" 
     // indica que le va a dar bola al atributo categoria  que tenga el obj empleado, nombre del atributo en el obj (atributo categoria
@@ -40,12 +40,12 @@ public class Categoria {
         this.nombre = nombre;
     }
 
-    public BigDecimal getSueldoBase() {
-        return sueldoBase;
+    public BigDecimal getSueldo() {
+        return sueldo;
     }
 
-    public void setSueldoBase(BigDecimal sueldoBase) {
-        this.sueldoBase = sueldoBase;
+    public void setSueldo(BigDecimal sueldo) {
+        this.sueldo = sueldo;
 	}
 
     public List<Empleado> getEmpleados() {
