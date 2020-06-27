@@ -20,6 +20,8 @@ import ar.com.ada.api.empleados.services.CategoriaService;
 public class CategoriaController {
     @Autowired
     CategoriaService categoriaService;
+    @Autowired
+    
     // indica a front que haga un post a la ruta indicada (categorias)
     // buenas practicas sustantivos en plural(api rest)
     @PostMapping("/categorias")
